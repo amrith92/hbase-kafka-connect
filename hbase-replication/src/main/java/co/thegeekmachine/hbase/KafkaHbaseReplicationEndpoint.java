@@ -25,13 +25,11 @@ public class KafkaHbaseReplicationEndpoint extends BaseReplicationEndpoint {
 
     @Override
     protected void doStart() {
-        kafkaConnector.start(Maps.newHashMap());
         notifyStarted();
     }
 
     @Override
     protected void doStop() {
-        kafkaConnector.stop();
         notifyStopped();
     }
 
@@ -44,6 +42,10 @@ public class KafkaHbaseReplicationEndpoint extends BaseReplicationEndpoint {
     @Override
     public boolean replicate(final ReplicateContext replicateContext) {
         log.debug("replication (count, entries) = {}, {}", replicateContext.getSize(), replicateContext.getEntries());
+        kafkaConnector.start(Maps.newHashMap());
+
+
+        kafkaConnector.stop();
 
         return true;
     }

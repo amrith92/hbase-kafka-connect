@@ -17,7 +17,7 @@ public class HBaseSourceConnector extends SourceConnector {
     }
 
     @Override
-    public void start(final Map<String, String> map) {
+    public void start(final Map<String, String> props) {
 
     }
 
